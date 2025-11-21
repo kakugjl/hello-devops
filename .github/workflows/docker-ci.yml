@@ -19,7 +19,7 @@ jobs:
       with:
         python-version: "3.10"
 
-    # Step 3: Cache pip packages (speed up CI)
+    # Step 3: Cache pip packages
     - name: Cache pip packages
       uses: actions/cache@v3
       with:
@@ -38,7 +38,7 @@ jobs:
         pip install flake8
         flake8 app.py
 
-    # Step 6: Run tests
+    # Step 6: Run unit tests
     - name: Run unit tests
       run: |
         pip install pytest
@@ -51,4 +51,5 @@ jobs:
         dockerfile: Dockerfile
 
     # Step 8: Build Docker image
-    - name: Build Doc
+    - name: Build Docker image
+      run: docker build -t hello-devops .
